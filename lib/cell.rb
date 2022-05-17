@@ -18,5 +18,15 @@ attr_reader :coordinate, :ship
     @ship = ship_name
   end
 
+  def fired_upon?
+    if ship.health < ship.length
+      true
+    else
+      false
+    end
+  end
 
+  def fire_upon
+    ship.hit
+  end
 end
