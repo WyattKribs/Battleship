@@ -1,5 +1,5 @@
 require './lib/ship'
-
+ 
 describe Ship do
   before(:each) do
     @cruiser = Ship.new("Cruiser", 3)
