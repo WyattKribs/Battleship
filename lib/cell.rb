@@ -9,7 +9,7 @@ attr_reader :coordinate, :ship
   def empty?
     if ship == nil
       true
-    else
+    elsif ship != nil
       false
     end
   end
@@ -19,14 +19,33 @@ attr_reader :coordinate, :ship
   end
 
   def fired_upon?
-    if ship.health < ship.length
+    if empty? == false && ship.sunk? == false && ship.health < ship.length
       true
+    elsif empty? == true
+       true
     else
       false
     end
   end
 
   def fire_upon
-    ship.hit
+    if empty? == false
+      ship.hit
+    elsif empty? == true
+
+    end
+  end
+
+
+  def render
+    if empty? == false && ship.sunk? == false && fired_upon? == false
+      "S"
+    elsif empty? == false && ship.sunk? == true
+      "X"
+    elsif empty? == false && fired_upon? == true && ship.sunk? == false
+      "H"
+    elsif empty? == true
+      "."
+    end
   end
 end

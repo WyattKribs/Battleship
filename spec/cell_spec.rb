@@ -47,4 +47,42 @@ describe Cell do
     expect(@cell.fired_upon?).to eq(true)
   end
 
+  before(:each) do
+    @cruiser = Ship.new("Cruiser", 3)
+    @cell_1 = Cell.new("A4")
+    @cell_2 = Cell.new("B4")
+    @cell_3 = Cell.new("C4")
+  end
+
+  it "can render an empty cell" do
+    expect(@cell_1.render).to eq(".")
+  end
+
+  it "can tell you that there is a ship" do
+    @cell_1.place_ship(@cruiser)
+    expect(@cell_1.render).to eq("S")
+  end
+
+  it "can tell that a ship has been sunk" do
+    @cell_1.place_ship(@cruiser)
+    @cruiser.hit
+    @cruiser.hit
+    @cruiser.hit
+    expect(@cell_1.render).to eq("X")
+  end
+
+  it "can tell that it's been hit" do
+  @cell_1.place_ship(@cruiser)
+  @cell_1.fire_upon
+  expect(@cell_1.render).to eq("H")
+  end
+
+  it "can tell that it's only been hit in one spot" do
+    @cell_1.place_ship(@cruiser)
+    @cell_2.place_ship(@cruiser)
+    @cell_3.place_ship(@cruiser)
+    @cell_1.fire_upon
+    expect(@cell_1.render).to eq("H")
+    expect(@cell_2.render).to eq("S")
+  end
 end
