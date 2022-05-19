@@ -57,37 +57,56 @@ describe Cell do
     expect(@cell_1.render).to eq(".")
   end
 
-  it "can tell you that there is a ship" do
-    @cell_1.place_ship(@cruiser)
-    expect(@cell_1.render(true)).to eq("S")
-  end
-
-  it "can tell that a ship has been sunk" do
-    @cell_1.place_ship(@cruiser)
-    @cruiser.hit
-    @cruiser.hit
-    @cruiser.hit
-    expect(@cell_1.render).to eq("X")
-  end
-
-  it "can tell that it's been hit" do
-  @cell_1.place_ship(@cruiser)
-  @cell_1.fire_upon
-  expect(@cell_1.render).to eq("H")
-  end
-
-  it "can tell that it's only been hit in one spot" do
-    @cell_1.place_ship(@cruiser)
-    @cell_2.place_ship(@cruiser)
-    @cell_1.fire_upon
-    expect(@cell_1.render).to eq("H")
-    expect(@cell_2.render(true)).to eq("S")
-  end
-
-
   it "is able to miss" do
     @cell_1.fire_upon
     expect(@cell_1.render).to eq("M")
   end
+
+  it "Can place a ship" do
+    @cell_2.place_ship(@cruiser)
+    expect(@cell_2.ship).to eq(@cruiser)
+  end
+
+  it "can render an empty cell" do
+    expect(@cell_2.render).to eq(".")
+  end
+
+  it "will render ship if render(true) is passed" do
+    @cell_2.place_ship(@cruiser)
+    expect(@cell_2.render).to eq(".")
+    expect(@cell_2.render(true)).to eq("S")
+  end
+
+  it "wont render a ship if it isnt there" do
+    expect(@cell_2.render(true)).to eq(".")
+  end
+
+  it "detects cell 2 to be fired upon" do
+    @cell_2.place_ship(@cruiser)
+    @cell_2.fire_upon
+    expect(@cell_2.render).to eq("H")
+  end
+
+  it "detects if if cell_2 has sunk?" do
+    @cell_2.place_ship(@cruiser)
+    @cell_2.fire_upon
+    expect(@cruiser.sunk?).to eq(false)
+  end
+
+  it "detects if cruiser has sunk? == true" do
+    @cell_2.place_ship(@cruiser)
+    @cell_2.fire_upon
+    @cruiser.hit
+    @cruiser.hit
+    expect(@cruiser.sunk?).to eq(true)
+  end
+
+  it "renders an X when it has sunk?" do
+  @cell_2.place_ship(@cruiser)
+  @cell_2.fire_upon
+  @cruiser.hit
+  @cruiser.hit
+  expect(@cell_2.render).to eq("X")
+end
 
 end

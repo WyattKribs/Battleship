@@ -36,7 +36,7 @@ attr_reader :coordinate, :ship, :fired_upon
         "X"
       elsif empty? == false && fired_upon == true && ship.sunk? == false
         "H"
-      elsif empty? == true
+      elsif empty? == true || fired_upon == false
         "."
       end
     end
