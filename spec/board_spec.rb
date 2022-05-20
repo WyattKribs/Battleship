@@ -11,6 +11,6 @@ describe Board do
 
   it "can verify coordinates" do
     expect(@board.valid_coordinate?("A1")).to eq(true)
-    # expect(@board.valid_coordinate?("A11")).to eq(false)
+    expect(@board.valid_coordinate?("A11")).to eq(false)
   end
 end
