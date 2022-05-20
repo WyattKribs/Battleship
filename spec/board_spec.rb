@@ -10,7 +10,10 @@ describe Board do
   end
 
   it "can verify coordinates" do
+    # require 'pry' ; binding.pry
     expect(@board.valid_coordinate?("A1")).to eq(true)
+    expect(@board.valid_coordinate?("A5")).to eq(false)
+    expect(@board.valid_coordinate?("C4")).to eq(true)
     expect(@board.valid_coordinate?("A11")).to eq(false)
   end
 end
