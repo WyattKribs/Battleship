@@ -42,9 +42,9 @@ class Board
 
     if ship.length != coordinates.count
       false
-    elsif number.each_cons(2).all? {|a,b| b == a + 1} && letter.each_cons(2).all?{|a,b| b == a}
+    elsif letter.each_cons(2).all? {|a,b| b == a + 1} && number.each_cons(2).all? {|a,b| b == a}
       true
-    elsif letter.each_cons(2).all?{|a,b| b == a + 1} && number.each_cons(2).all? {|a,b| b == a}
+    elsif number.each_cons(2).all? {|a,b| b == a + 1} && letter.each_cons(2).all?{|a,b| b == a}
       true
     else
       false

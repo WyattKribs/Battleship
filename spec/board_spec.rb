@@ -36,4 +36,9 @@ describe Board do
     expect(@board.valid_placement?(@submarine, ["C2", "D3"])).to eq(false)
   end
 
+  it "should check if placement is valid" do
+    expect(@board.valid_placement?(@submarine, ["A1", "A2"])).to eq(true)
+    expect(@board.valid_placement?(@cruiser, ["B1", "C1", "D1"])).to eq(true)
+  end
+
 end
