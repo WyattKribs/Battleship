@@ -29,4 +29,24 @@ class Board
       true
     end
   end
+
+  def valid_placement?(ship, coordinates)
+    letter = []
+    number = []
+
+    coordinates.each do |coordinate|
+      letter << coordinate.split("")[0].ord
+      number << coordinate.split("")[1].to_i
+    end
+
+    if ship.length != coordinates.count
+      false
+    elsif letter.each_cons(2).all? {|a,b| b == a + 1} && number.each_cons(2).all? {|a,b| b == a}
+      true
+    elsif number.each_cons(2).all? {|a,b| b == a + 1} && letter.each_cons(2).all?{|a,b| b == a}
+      true
+    else
+      false
+    end
+  end
 end
