@@ -31,11 +31,10 @@ class Board
   end
 
   def valid_placement?(ship, coordinates)
-    range = "A1".."D4"
     letter = []
     number = []
 
-    range.each do |coordinate|
+    coordinates.each do |coordinate|
       letter << coordinate.split("")[0].ord
       number << coordinate.split("")[1].to_i
     end
