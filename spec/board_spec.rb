@@ -41,4 +41,17 @@ describe Board do
     expect(@board.valid_placement?(@cruiser, ["B1", "C1", "D1"])).to eq(true)
   end
 
+  it "can place ships" do
+    @board.place(@cruiser, ["A1", "A2", "A3"])
+    expect(@board.cells["A1"].empty?).to eq(false)
+    expect(@board.cells["A2"].empty?).to eq(false)
+    expect(@board.cells["A3"].empty?).to eq(false)
+  end
+
+  it "will only place ships if the coordinates are valid" do
+    @board.place(@cruiser, ["A1", "A2", "A4"])
+    expect(@board.cells["A1"].empty?).to eq(true)
+    expect(@board.cells["A2"].empty?).to eq(true)
+    expect(@board.cells["A4"].empty?).to eq(true)
+  end
 end
