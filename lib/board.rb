@@ -49,4 +49,12 @@ class Board
       false
     end
   end
+
+  def place(ship, coordinates)
+    coordinates.each do |coordinate|
+      if valid_placement?(ship, coordinates) == true
+        @cells[coordinate].place_ship(ship)
+      end
+    end
+  end
 end
