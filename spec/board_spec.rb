@@ -54,4 +54,9 @@ describe Board do
     expect(@board.cells["A2"].empty?).to eq(true)
     expect(@board.cells["A4"].empty?).to eq(true)
   end
+
+  it "is able to check no ships are overlapping" do
+    @board.place(@cruiser, ["A1", "A2", "A3"])
+    expect(@board.valid_placement?(@submarine, ["A1", "B1"])).to eq(false)
+  end
 end
