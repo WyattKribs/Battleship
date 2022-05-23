@@ -7,7 +7,7 @@ describe Cell do
     @cell = Cell.new("B4")
     @cruiser = Ship.new("Cruiser", 3)
   end
-
+  
   it "is an instance of cell" do
     expect(@cell).to be_a(Cell)
   end
