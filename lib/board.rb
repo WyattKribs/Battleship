@@ -30,6 +30,10 @@ class Board
     end
   end
 
+  # def overlap?
+  #
+  # end
+
   def valid_placement?(ship, coordinates)
     letter = []
     number = []
@@ -37,6 +41,12 @@ class Board
     coordinates.each do |coordinate|
       letter << coordinate.split("")[0].ord
       number << coordinate.split("")[1].to_i
+    end
+
+    coordinates.each do |coordinate|
+      if @cells[coordinate].empty? != true
+        return false
+      end
     end
 
     if ship.length != coordinates.count
@@ -51,8 +61,8 @@ class Board
   end
 
   def place(ship, coordinates)
-    coordinates.each do |coordinate|
-      if valid_placement?(ship, coordinates) == true
+    if valid_placement?(ship, coordinates) == true
+      coordinates.each do |coordinate|
         @cells[coordinate].place_ship(ship)
       end
     end
