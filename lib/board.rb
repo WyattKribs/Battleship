@@ -37,20 +37,20 @@ class Board
   def valid_placement?(ship, coordinates)
     letter = []
     number = []
-    ord = []
-    require 'pry' ; binding.pry
+
     coordinates.each do |coordinate|
       letter << coordinate.split("")[0].ord
       number << coordinate.split("")[1].to_i
-      if @cells[coordinate].empty? == false
+    end
+
+    coordinates.each do |coordinate|
+      if @cells[coordinate].empty? != true
         return false
       end
     end
 
     if ship.length != coordinates.count
       false
-    elsif cells[@coordinates].empty? == false
-      true
     elsif letter.each_cons(2).all? {|a,b| b == a + 1} && number.each_cons(2).all? {|a,b| b == a}
       true
     elsif number.each_cons(2).all? {|a,b| b == a + 1} && letter.each_cons(2).all?{|a,b| b == a}
@@ -61,8 +61,8 @@ class Board
   end
 
   def place(ship, coordinates)
-    coordinates.each do |coordinate|
-      if valid_placement?(ship, coordinates) == true
+    if valid_placement?(ship, coordinates) == true
+      coordinates.each do |coordinate|
         @cells[coordinate].place_ship(ship)
       end
     end
