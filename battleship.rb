@@ -19,7 +19,7 @@ def create_game
 end
 
 def comp_placement
-
+  
 end
 
 def the_game
@@ -41,6 +41,22 @@ def the_game
           break
         else
           p 'invalid placement, pick again'
+          puts @play_board.render(true)
+        end
+      end
+      puts @play_board.render(true)
+      loop do
+        p 'place the submarine, pick 2 consecutive positions'
+        submarine_place = []
+        2.times do
+          submarine_place << gets.chomp.upcase
+        end
+        if @play_board.valid_placement?(@play_submarine, submarine_place) == true
+          @play_board.place(@play_submarine, submarine_place)
+          break
+        else
+          p 'invalid placement, pick again'
+          puts @play_board.render(true)
         end
       end
       puts @play_board.render(true)
