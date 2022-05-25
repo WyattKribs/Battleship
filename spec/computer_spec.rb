@@ -11,5 +11,4 @@ describe Computer do
   it "can make arrays of the correct length" do
     expect(@computer.place_ship(@cruiser.length).length).to eq(3)
   end
-  
 end

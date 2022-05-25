@@ -7,7 +7,7 @@ def welcome
 end
 
 def player_choice
-p 'type p to play or q to quit'
+p 'Type P to play or Q to quit.'
 end
 
 def create_game
@@ -18,10 +18,6 @@ def create_game
   @comp_cruiser = Ship.new("Cruiser", 3)
   @comp_submarine = Ship.new("Submarine", 2)
   @computer = Computer.new
-end
-
-def comp_placement
-
 end
 
 def the_game
@@ -80,7 +76,7 @@ def the_game
                         ###FIRE AT SHIPS#####
       loop do
         p "=============COMPUTER BOARD============="
-        puts @comp_board.render (true)
+        puts @comp_board.render
         if @play_submarine.sunk? && @play_cruiser.sunk?
           puts "You have lost take the L"
         elsif @comp_cruiser.sunk? && @comp_submarine.sunk?
@@ -105,6 +101,8 @@ def the_game
             @comp_board.cells[player_shot].fire_upon
             if @comp_board.cells[player_shot].render == "H"
               puts "That's a HIT"
+            elsif @comp_board.cells[player_shot].render == "X"
+              puts "You SUNK its ship"
             else
               puts "That's a MISS"
             end
@@ -119,6 +117,8 @@ def the_game
             @play_board.cells[comp_shot].fire_upon
             if @play_board.cells[comp_shot].render == "H"
               puts "Your ship is HIT"
+            elsif @play_board.cells[comp_shot].render == "X"
+              puts "Your ship is SUNK"
             else
               puts "The enemy MISSED"
             end
