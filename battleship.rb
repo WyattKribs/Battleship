@@ -81,8 +81,20 @@ def the_game
       loop do
         p "=============COMPUTER BOARD============="
         puts @comp_board.render (true)
+        if @play_submarine.sunk? && @play_cruiser.sunk?
+          puts "You have lost take the L"
+        elsif @comp_cruiser.sunk? && @comp_submarine.sunk?
+          puts "Congratulations You Won"
+          break
+        end
         p "==============PLAYER BOARD=============="
         puts @play_board.render(true)
+        if @play_submarine.sunk? && @play_cruiser.sunk?
+          puts "You have lost take the L"
+        elsif @comp_cruiser.sunk? && @comp_submarine.sunk?
+          puts "Congratulations You Won"
+          break
+        end
 
         p "Enter the coordinate for your shot:"
         loop do
@@ -104,11 +116,7 @@ def the_game
           elsif @play_board.cells[comp_shot].fired_upon == true
           end
         end
-
       end
-
-
-
     elsif play_or_quite == 'Q'
       break
     else
