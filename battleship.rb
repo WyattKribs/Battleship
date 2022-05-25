@@ -103,6 +103,11 @@ def the_game
             p "Please enter a valid coordinate:"
           elsif @comp_board.cells[player_shot].fired_upon == false
             @comp_board.cells[player_shot].fire_upon
+            if @comp_board.cells[player_shot].render == "H"
+              puts "That's a HIT"
+            else
+              puts "That's a MISS"
+            end
             break
           elsif @comp_board.cells[player_shot].fired_upon == true
             p "Please enter a valid coordinate:"
@@ -112,6 +117,11 @@ def the_game
           comp_shot = @computer.hit
           if @play_board.cells[comp_shot].fired_upon == false
             @play_board.cells[comp_shot].fire_upon
+            if @play_board.cells[comp_shot].render == "H"
+              puts "Your ship is HIT"
+            else
+              puts "The enemy MISSED"
+            end
             break
           elsif @play_board.cells[comp_shot].fired_upon == true
           end

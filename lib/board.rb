@@ -49,7 +49,7 @@ class Board
       end
     end
 
-    if ship.length != coordinates.count
+    if ship.length != coordinates.count || coordinates.any? {|coordinate| !valid_coordinate?(coordinate)}
       false
     elsif letter.each_cons(2).all? {|a,b| b == a + 1} && number.each_cons(2).all? {|a,b| b == a}
       true
