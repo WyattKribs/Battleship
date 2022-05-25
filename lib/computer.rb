@@ -13,7 +13,6 @@ class Computer
     @logic.shuffle[0]
   end
 
-
   def place_ship(ship_length)
     ship_array = []
     placement = []

@@ -18,7 +18,6 @@ attr_reader :coordinate, :ship, :fired_upon
     @ship = ship_name
   end
 
-
     def fire_upon
       @fired_upon = true
       if @ship != nil

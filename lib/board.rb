@@ -30,10 +30,6 @@ class Board
     end
   end
 
-  # def overlap?
-  #
-  # end
-
   def valid_placement?(ship, coordinates)
     letter = []
     number = []
@@ -71,5 +67,4 @@ class Board
   def render(ship_rev = false)
     "  1 2 3 4 \nA #{@cells["A1"].render(ship_rev)} #{@cells["A2"].render(ship_rev)} #{@cells["A3"].render(ship_rev)} #{@cells["A4"].render(ship_rev)} \nB #{@cells["B1"].render(ship_rev)} #{@cells["B2"].render(ship_rev)} #{@cells["B3"].render(ship_rev)} #{@cells["B4"].render(ship_rev)} \nC #{@cells["C1"].render(ship_rev)} #{@cells["C2"].render(ship_rev)} #{@cells["C3"].render(ship_rev)} #{@cells["C4"].render(ship_rev)} \nD #{@cells["D1"].render(ship_rev)} #{@cells["D2"].render(ship_rev)} #{@cells["D3"].render(ship_rev)} #{@cells["D4"].render(ship_rev)} \n"
   end
-
 end
