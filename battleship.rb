@@ -79,6 +79,7 @@ def the_game
         puts @comp_board.render
         if @play_submarine.sunk? && @play_cruiser.sunk?
           puts "You have lost take the L"
+          break
         elsif @comp_cruiser.sunk? && @comp_submarine.sunk?
           puts "Congratulations You Won"
           break
@@ -87,6 +88,7 @@ def the_game
         puts @play_board.render(true)
         if @play_submarine.sunk? && @play_cruiser.sunk?
           puts "You have lost take the L"
+          break
         elsif @comp_cruiser.sunk? && @comp_submarine.sunk?
           puts "Congratulations You Won"
           break
