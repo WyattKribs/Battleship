@@ -16,7 +16,7 @@ def create_game
   @play_submarine = Ship.new("Submarine", 2)
   @comp_cruiser = Ship.new("Cruiser", 3)
   @comp_submarine = Ship.new("Submarine", 2)
-  @fires = ["A1", "A2", "A3"]
+  @fires = ["A1", "A2", "A3", "A4"]
 end
 
 def comp_placement
@@ -98,7 +98,7 @@ def the_game
           end
         end
         loop do
-          comp_shot = "A1"
+          comp_shot = @fires.shuffle[0]
           if @play_board.cells[comp_shot].fired_upon == false
             @play_board.cells[comp_shot].fire_upon
             break
