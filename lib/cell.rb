@@ -30,12 +30,12 @@ attr_reader :coordinate, :ship, :fired_upon
     def render(ship_rev = false)
       if empty? == true && fired_upon == true
         "M"
-      elsif ship_rev == true && empty? == false
-        "S"
+      elsif empty? == false && fired_upon == true && ship.sunk? == false || empty? == false && fired_upon == true && ship.sunk? == false && ship_rev == true
+        "H"
       elsif empty? == false && ship.sunk? == true
         "X"
-      elsif empty? == false && fired_upon == true && ship.sunk? == false
-        "H"
+      elsif ship_rev == true && empty? == false
+        "S"
       elsif empty? == true || fired_upon == false
         "."
       end
