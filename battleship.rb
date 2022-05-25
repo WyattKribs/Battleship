@@ -19,7 +19,7 @@ def create_game
 end
 
 def comp_placement
-  
+
 end
 
 def the_game
@@ -59,7 +59,49 @@ def the_game
           puts @play_board.render(true)
         end
       end
-      puts @play_board.render(true)
+                    #####RENDER COMP SHIPS#######
+      loop do
+        submarine_place = ["A1", "A2"]
+        if @comp_board.valid_placement?(@comp_submarine, submarine_place) == true
+          @comp_board.place(@comp_submarine, submarine_place)
+          break
+        end
+      end
+      loop do
+        cruiser_place = ["B1", "B2", "B3"]
+        if @comp_board.valid_placement?(@comp_cruiser, cruiser_place) == true
+          @comp_board.place(@comp_cruiser, cruiser_place)
+          break
+        else
+          p 'invalid placement, pick again'
+          puts @play_board.render(true)
+        end
+      end
+                        ###FIRE AT SHIPS#####
+      loop do
+        p "=============COMPUTER BOARD============="
+        puts @comp_board.render #(true)
+        p "==============PLAYER BOARD=============="
+        puts @play_board.render(true)
+
+        p "Enter the coordinate for your shot:"
+        loop do
+          player_shot = gets.chomp.upcase
+          if @comp_board.cells[player_shot] == nil
+            p "Please enter a valid coordinate:"
+          elsif @comp_board.cells[player_shot].fired_upon == false
+            @comp_board.cells[player_shot].fire_upon
+            break
+          elsif @comp_board.cells[player_shot].fired_upon == true
+            p "Please enter a valid coordinate:"
+          end
+        
+        end
+
+      end
+
+
+
     elsif play_or_quite == 'Q'
       break
     else
